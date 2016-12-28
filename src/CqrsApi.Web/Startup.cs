@@ -27,37 +27,35 @@ namespace CqrsApi.Web
 
 		public IConfigurationRoot Configuration { get; }
 
-		public IContainer ApplicationContainer { get; private set; }
-
 		public IServiceProvider ConfigureServices(IServiceCollection services)
 		{
-			// Add framework services.
 			services
-				.AddMvc()
+				.AddMvc(config =>
+					{
+						config.Conventions.Add(new CommandControllerNameConvention());
+					})
 				.AddCqrsApi(options =>
-				{
-					options.MapGet("/things").ToQuery<ThingsQuery>();
-					options.MapPost("/new-thing").ToCommand<NewThingCommand>();
-				});
+					{
+						options.MapGet("things").ToQuery<ThingsQuery>();
+						options.MapPost("new-thing").ToCommand<NewThingCommand>();
+					});
 
 			var builder = new ContainerBuilder();
 
 			builder.RegisterAssemblyTypes(typeof(Startup).GetTypeInfo().Assembly).AsImplementedInterfaces();
 			builder.RegisterModule<CqrsEssentialsAutofacModule>();
 			builder.Populate(services);
-			this.ApplicationContainer = builder.Build();
+			var container = builder.Build();
 
-			// Create the IServiceProvider based on the container.
-			return new AutofacServiceProvider(this.ApplicationContainer);
+			return new AutofacServiceProvider(container);
 		}
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
 		{
 			loggerFactory.AddConsole(Configuration.GetSection("Logging"));
 			loggerFactory.AddDebug();
 
-			app.UseMvcWithDefaultRoute();
+			app.UseMvcWithCqrsApi();
 		}
 	}
 }

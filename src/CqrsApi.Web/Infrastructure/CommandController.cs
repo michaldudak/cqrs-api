@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CqrsApi.Web.Infrastructure
 {
 	[CommandControllerNameConvention]
-	public class CommandController<TCommand> where TCommand : ICommand
+	public class CommandController<TCommand> : Controller where TCommand : class, ICommand
 	{
 		private readonly ICommandDispatcher _commandDispatcher;
 
@@ -14,7 +14,6 @@ namespace CqrsApi.Web.Infrastructure
 			_commandDispatcher = commandDispatcher;
 		}
 
-		[HttpPost]
 		public async Task Index([FromBody]TCommand command)
 		{
 			await _commandDispatcher.DispatchAsync(command);

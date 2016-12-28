@@ -8,11 +8,16 @@ namespace CqrsApi.Web.Infrastructure
 		public static void AddCqrsApi(this IMvcBuilder mvcBuilder,
 			Action<CqrsApiOptions> configurationAction)
 		{
+			var cqrsApiOptions = new CqrsApiOptions();
+			configurationAction(cqrsApiOptions);
+
 			mvcBuilder.ConfigureApplicationPartManager(p =>
 			{
-				p.FeatureProviders.Add(new CommandControllerFeatureProvider());
-				p.FeatureProviders.Add(new QueryControllerFeatureProvider());
+				p.FeatureProviders.Add(new CommandControllerFeatureProvider(cqrsApiOptions));
+				p.FeatureProviders.Add(new QueryControllerFeatureProvider(cqrsApiOptions));
 			});
+
+			mvcBuilder.Services.AddSingleton(cqrsApiOptions);
 		}
 	}
 }
