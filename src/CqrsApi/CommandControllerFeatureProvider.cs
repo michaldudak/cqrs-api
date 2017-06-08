@@ -5,7 +5,7 @@ using CqrsEssentials;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Controllers;
 
-namespace CqrsApi.Web.Infrastructure
+namespace CqrsApi
 {
 	public class CommandControllerFeatureProvider : IApplicationFeatureProvider<ControllerFeature>
 	{

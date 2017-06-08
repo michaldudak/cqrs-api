@@ -2,7 +2,7 @@
 using CqrsEssentials;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CqrsApi.Web.Infrastructure
+namespace CqrsApi
 {
 	[CommandControllerNameConvention]
 	public class CommandController<TCommand> : Controller where TCommand : class, ICommand

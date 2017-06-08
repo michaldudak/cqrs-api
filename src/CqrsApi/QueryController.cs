@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using CqrsEssentials;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CqrsApi.Web.Infrastructure
+namespace CqrsApi
 {
 	[QueryControllerNameConvention]
 	public class QueryController<TQuery, TResult> where TQuery : IQuery<TResult>

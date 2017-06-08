@@ -1,15 +1,15 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
-namespace CqrsApi.Web.Infrastructure
+namespace CqrsApi
 {
-	public class QueryControllerNameConvention : Attribute, IControllerModelConvention
+	public class CommandControllerNameConvention : Attribute, IControllerModelConvention
 	{
 		public void Apply(ControllerModel controller)
 		{
-			if (controller.ControllerType.GetGenericTypeDefinition() != typeof(QueryController<,>))
+			if (controller.ControllerType.GetGenericTypeDefinition() != typeof(CommandController<>))
 			{
-				// Not a QueryController, ignore.
+				// Not a CommandController, ignore.
 				return;
 			}
 

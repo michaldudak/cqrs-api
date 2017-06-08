@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CqrsApi.Web.Infrastructure
+namespace CqrsApi
 {
 	public static class ServiceCollectionExtensions
 	{

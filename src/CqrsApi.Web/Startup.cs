@@ -3,7 +3,6 @@ using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using CqrsApi.Web.CommandsAndQueries;
-using CqrsApi.Web.Infrastructure;
 using CqrsEssentials.Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

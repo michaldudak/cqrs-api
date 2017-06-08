@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Routing.Constraints;
 
-namespace CqrsApi.Web.Infrastructure
+namespace CqrsApi
 {
 	public class CqrsApiOptions
 	{

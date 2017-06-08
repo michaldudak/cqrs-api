@@ -1,9 +1,8 @@
 ﻿using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
-using Microsoft.Extensions.DependencyInjection;
 
-namespace CqrsApi.Web.Infrastructure
+namespace CqrsApi
 {
 	public static class ApplicationBuilderExtensions
 	{

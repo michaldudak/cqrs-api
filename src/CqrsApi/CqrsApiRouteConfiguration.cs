@@ -1,7 +1,7 @@
 ﻿using System;
 using CqrsEssentials;
 
-namespace CqrsApi.Web.Infrastructure
+namespace CqrsApi
 {
 	public class CqrsApiRouteConfiguration
 	{

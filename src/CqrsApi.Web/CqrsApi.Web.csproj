@@ -4,9 +4,7 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>CqrsApi.Web</AssemblyName>
-    <OutputType>Exe</OutputType>
     <PackageId>CqrsApi.Web</PackageId>
-    <RuntimeFrameworkVersion>1.0.4</RuntimeFrameworkVersion>
     <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
   </PropertyGroup>
 
@@ -22,8 +20,11 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.1.2" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.1.2" />
-    <PackageReference Include="CQRSEssentials.Autofac" Version="1.0.0" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../CqrsApi/CqrsApi.csproj" />
   </ItemGroup>
 
 </Project>
