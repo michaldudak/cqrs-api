@@ -8,7 +8,7 @@ namespace CqrsApi
 	{
 		public static IApplicationBuilder UseMvcWithCqrsApi(this IApplicationBuilder applicationBuilder, Action<IRouteBuilder> configureRoutes = null)
 		{
-			var apiOptions = applicationBuilder.ApplicationServices.GetService<CqrsApiOptions>();
+			var apiOptions = applicationBuilder.ApplicationServices.GetService(typeof (CqrsApiOptions)) as CqrsApiOptions;
 
 			if (apiOptions == null)
 			{
