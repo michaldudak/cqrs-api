@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using CqrsApi.Web.Domain;
+using CqrsApi.Sample.Domain;
 using CqrsEssentials;
 
-namespace CqrsApi.Web.CommandsAndQueries
+namespace CqrsApi.Sample.CommandsAndQueries
 {
 	public class ThingsQuery : IQuery<ICollection<Thing>>
 	{

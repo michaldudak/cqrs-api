@@ -1,7 +1,7 @@
-﻿using CqrsApi.Web.CommandsAndQueries;
+﻿using CqrsApi.Sample.CommandsAndQueries;
 using CqrsEssentials;
 
-namespace CqrsApi.Web.Domain
+namespace CqrsApi.Sample.Domain
 {
 	public class NewThingCommandHandler : ICommandHandler<NewThingCommand>
 	{

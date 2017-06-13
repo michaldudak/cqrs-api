@@ -2,14 +2,14 @@
 using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using CqrsApi.Web.CommandsAndQueries;
+using CqrsApi.Sample.CommandsAndQueries;
 using CqrsEssentials.Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CqrsApi.Web
+namespace CqrsApi.Sample
 {
 	public class Startup
 	{

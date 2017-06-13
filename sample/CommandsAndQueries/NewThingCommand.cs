@@ -1,6 +1,6 @@
 ﻿using CqrsEssentials;
 
-namespace CqrsApi.Web.CommandsAndQueries
+namespace CqrsApi.Sample.CommandsAndQueries
 {
 	public class NewThingCommand : ICommand
 	{

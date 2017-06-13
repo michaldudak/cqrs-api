@@ -14,7 +14,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "CqrsApi.Web": {
+    "CqrsApi.Sample": {
       "commandName": "Project",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

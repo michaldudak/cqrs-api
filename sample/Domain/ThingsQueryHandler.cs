@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CqrsApi.Web.CommandsAndQueries;
+using CqrsApi.Sample.CommandsAndQueries;
 using CqrsEssentials;
 
-namespace CqrsApi.Web.Domain
+namespace CqrsApi.Sample.Domain
 {
 	public class ThingsQueryHandler : IQueryHandler<ThingsQuery, ICollection<Thing>>
 	{
 		public ICollection<Thing> Handle(ThingsQuery query)
 		{
-			return Things.Items.Where(t => t.StartsWith(query.NamePrefix)).Select(t => new Thing(t)).ToList();
+			var namePrefix = query.NamePrefix ?? "";
+			return Things.Items.Where(t => t.StartsWith(namePrefix)).Select(t => new Thing(t)).ToList();
 		}
 	}
 }

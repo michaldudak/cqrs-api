@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CqrsApi.Web.Domain
+namespace CqrsApi.Sample.Domain
 {
 	public static class Things
 	{

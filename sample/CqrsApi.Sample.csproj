@@ -2,8 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
-    <AssemblyName>CqrsApi.Web</AssemblyName>
-    <PackageId>CqrsApi.Web</PackageId>
+    <AssemblyName>CqrsApi.Sample</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0-preview1-final" />
@@ -11,6 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../CqrsApi/CqrsApi.csproj" />
+    <ProjectReference Include="../src/CqrsApi.csproj" />
   </ItemGroup>
 </Project>

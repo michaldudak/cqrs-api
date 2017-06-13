@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace CqrsApi.Web
+namespace CqrsApi.Sample
 {
 	public class Program
 	{

@@ -1,4 +1,4 @@
-﻿namespace CqrsApi.Web.Domain
+﻿namespace CqrsApi.Sample.Domain
 {
 	public class Thing
 	{
