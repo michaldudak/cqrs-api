@@ -29,8 +29,7 @@ namespace CqrsApi.Sample
 					})
 				.AddCqrsApi(options =>
 					{
-						options.MapGet("things").ToQuery<ThingsQuery>();
-						options.MapPost("new-thing").ToCommand<NewThingCommand>();
+                        options.DiscoverAssemblyTypes(typeof(Startup).Assembly);
 					});
 
 			var builder = new ContainerBuilder();
