@@ -1,41 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.AspNetCore.Routing.Constraints;
+using Autofac;
+using CqrsEssentials;
 
 namespace CqrsApi
 {
 	public class CqrsApiOptions
 	{
-		internal List<CqrsApiRouteConfiguration> Configs { get; } = new List<CqrsApiRouteConfiguration>();
+		internal List<Type> CommandTypes { get; } = new List<Type>();
+		internal List<Type> QueryTypes { get; } = new List<Type>();
 
-		public CqrsApiRouteConfiguration MapGet(string urlTemplate)
+		public void DiscoverAssemblyTypes(Assembly assembly)
 		{
-			return Map("GET", urlTemplate);
-		}
+			CommandTypes.AddRange(assembly.GetTypes()
+				.Where(c => typeof(ICommand).IsAssignableFrom(c)));
 
-		public CqrsApiRouteConfiguration MapPost(string urlTemplate)
-		{
-			return Map("POST", urlTemplate);
-		}
-
-		public CqrsApiRouteConfiguration Map(string verb, string urlTemplate)
-		{
-			var routeConfig = new CqrsApiRouteConfiguration(verb, urlTemplate);
-			Configs.Add(routeConfig);
-			return routeConfig;
-		}
-
-		internal void PopulateRoutes(IRouteBuilder routeBuilder)
-		{
-			foreach (var config in Configs)
-			{
-				routeBuilder.MapRoute(
-					config.InputType.FullName,
-					config.UrlTemplate,
-					new {controller = config.InputType.Name, action = "Index"},
-					new RouteValueDictionary(new {httpMethod = new HttpMethodRouteConstraint(config.Verb)}));
-			}
+			QueryTypes.AddRange(assembly.GetTypes()
+				.Where(c => c.IsClosedTypeOf(typeof(IQuery<>))));
 		}
 	}
 }

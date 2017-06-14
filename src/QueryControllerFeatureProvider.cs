@@ -19,9 +19,7 @@ namespace CqrsApi
 
 		public void PopulateFeature(IEnumerable<ApplicationPart> parts, ControllerFeature feature)
 		{
-			var types = _apiOptions.Configs.Where(c => c.InputType.IsClosedTypeOf(typeof(IQuery<>))).Select(c => c.InputType);
-
-			foreach (var type in types)
+			foreach (var type in _apiOptions.QueryTypes)
 			{
 				var returnType =
 					type.GetInterfaces()

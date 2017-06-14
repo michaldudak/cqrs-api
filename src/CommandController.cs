@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CqrsApi
 {
-	[CommandControllerNameConvention]
+	[CqrsApiControllerMetadataConvention]
 	public class CommandController<TCommand> : Controller where TCommand : class, ICommand
 	{
 		private readonly ICommandDispatcher _commandDispatcher;

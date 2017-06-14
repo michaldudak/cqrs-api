@@ -18,9 +18,8 @@ namespace CqrsApi
 
 		public void PopulateFeature(IEnumerable<ApplicationPart> parts, ControllerFeature feature)
 		{
-			var types = _cqrsApiOptions.Configs.Where(c => typeof(ICommand).IsAssignableFrom(c.InputType)).Select(c => c.InputType);
-
-			foreach (var type in types)
+			// The following code creates and registers controller types for each command/query class.
+			foreach (var type in _cqrsApiOptions.CommandTypes)
 			{
 				var controllerType = typeof(CommandController<>).MakeGenericType(type).GetTypeInfo();
 				feature.Controllers.Add(controllerType);
