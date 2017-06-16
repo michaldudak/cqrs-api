@@ -26,12 +26,7 @@ namespace CqrsApi.Sample
 		public IServiceProvider ConfigureServices(IServiceCollection services)
 		{
 			services
-				.AddMvc(config =>
-					{
-						// TODO: if possible, move this to AddCqrsApi, so that it can be enabled with a 1-liner
-						config.Conventions.Add(new CqrsApiControllerMetadataConvention());
-					})
-				.AddCqrsApi(options =>
+				.AddMvcWithCqrsApi(cqrsApiSetupAction: options =>
 					{
 						options.DiscoverAssemblyTypes(typeof(Startup).Assembly);
 					});
