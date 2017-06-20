@@ -74,6 +74,11 @@ namespace CqrsApi
 			);
 		}
 
+		public CqrsApiTypeProviderBuilder AddCommand<T>(string routeTemplate = null)
+		{
+			return AddCommand(typeof(T), routeTemplate);
+		}
+
 		public CqrsApiTypeProviderBuilder AddQuery(Type type, string routeTemplate = null)
 		{
 			var typeToAdd = new CQTypeMetadata(type, routeTemplate ?? DefaultRouteTemplateTransformFunction(type.Name));
@@ -83,6 +88,11 @@ namespace CqrsApi
 				commandTypes: Enumerable.Empty<CQTypeMetadata>(),
 				queryTypes: new[] { typeToAdd }
 			);
+		}
+
+		public CqrsApiTypeProviderBuilder AddQuery<T>(string routeTemplate = null)
+		{
+			return AddQuery(typeof(T), routeTemplate);
 		}
 
 		public void Build()

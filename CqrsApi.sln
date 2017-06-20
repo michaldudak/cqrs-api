@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.12
@@ -14,10 +14,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CqrsApi.Sample", "sample\Cq
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CqrsApi", "src\CqrsApi.csproj", "{457DB3FB-933C-4BFB-8799-FCD5F3FBD0D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CqrsApi.Tests", "test\CqrsApi.Tests.csproj", "{0C2EF4E8-50FB-4539-9F65-EC4BFAFD8F3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{6DECE9B8-1173-4146-9F99-79718C81FC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -28,6 +34,18 @@ Global
 		{457DB3FB-933C-4BFB-8799-FCD5F3FBD0D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{457DB3FB-933C-4BFB-8799-FCD5F3FBD0D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{457DB3FB-933C-4BFB-8799-FCD5F3FBD0D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C2EF4E8-50FB-4539-9F65-EC4BFAFD8F3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C2EF4E8-50FB-4539-9F65-EC4BFAFD8F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C2EF4E8-50FB-4539-9F65-EC4BFAFD8F3D}.Debug|x64.ActiveCfg = Debug|x64
+		{0C2EF4E8-50FB-4539-9F65-EC4BFAFD8F3D}.Debug|x64.Build.0 = Debug|x64
+		{0C2EF4E8-50FB-4539-9F65-EC4BFAFD8F3D}.Debug|x86.ActiveCfg = Debug|x86
+		{0C2EF4E8-50FB-4539-9F65-EC4BFAFD8F3D}.Debug|x86.Build.0 = Debug|x86
+		{0C2EF4E8-50FB-4539-9F65-EC4BFAFD8F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C2EF4E8-50FB-4539-9F65-EC4BFAFD8F3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C2EF4E8-50FB-4539-9F65-EC4BFAFD8F3D}.Release|x64.ActiveCfg = Release|x64
+		{0C2EF4E8-50FB-4539-9F65-EC4BFAFD8F3D}.Release|x64.Build.0 = Release|x64
+		{0C2EF4E8-50FB-4539-9F65-EC4BFAFD8F3D}.Release|x86.ActiveCfg = Release|x86
+		{0C2EF4E8-50FB-4539-9F65-EC4BFAFD8F3D}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
