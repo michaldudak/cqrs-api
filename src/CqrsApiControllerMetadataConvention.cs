@@ -13,7 +13,7 @@ namespace CqrsApi
 		{
 			var isCommandController = controller.ControllerType.IsClosedTypeOf(typeof(CommandController<>));
 			var isQueryController = isCommandController ? false : controller.ControllerType.IsClosedTypeOf(typeof(QueryController<,>));
-			
+
 			if (!isCommandController && !isQueryController)
 			{
 				// Just an ordinary controller, ignore it.
@@ -23,7 +23,7 @@ namespace CqrsApi
 			var entityType = controller.ControllerType.GenericTypeArguments[0];
 			controller.ControllerName = entityType.Name;
 			controller.ApiExplorer.IsVisible = true;
-			
+
 			// TODO: make sure there is a single selector (what if there are custom routes defined by the user?)
 			controller.Selectors[0].AttributeRouteModel = new AttributeRouteModel
 			{
@@ -32,7 +32,7 @@ namespace CqrsApi
 			};
 
 			controller.Selectors[0].ActionConstraints.Add(new HttpMethodActionConstraint(isCommandController ? new [] {"POST"} : new [] { "GET" }));
-		
+
 			// TODO: allow customizations (through attributes?), like caching, etc.
 			// Authz shouldn't be neccessary as it should be the command handler's responsibility.
 		}

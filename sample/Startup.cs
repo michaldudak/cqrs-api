@@ -28,7 +28,9 @@ namespace CqrsApi.Sample
 			services
 				.AddMvcWithCqrsApi(cqrsApiSetupAction: options =>
 					{
-						options.DiscoverAssemblyTypes(typeof(Startup).Assembly);
+						options.Builder
+							.AddAssemblyTypes(typeof(Startup).Assembly)
+							.Build();
 					});
 
 			services.AddSwaggerGen(options =>

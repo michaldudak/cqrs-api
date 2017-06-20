@@ -19,7 +19,7 @@ namespace CqrsApi
 
 		public void PopulateFeature(IEnumerable<ApplicationPart> parts, ControllerFeature feature)
 		{
-			foreach (var type in _apiOptions.QueryTypes)
+			foreach (var type in _apiOptions.QueryTypes.Select(qt => qt.CQType))
 			{
 				var returnType =
 					type.GetInterfaces()
