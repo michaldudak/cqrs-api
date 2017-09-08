@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 
 namespace CqrsApi
 {
@@ -8,13 +9,13 @@ namespace CqrsApi
 
 		public readonly string RouteTemplate;
 
-		public CQTypeMetadata(Type type, string routeTemplate)
+		public readonly HttpMethod HttpMethod;
+	
+		public CQTypeMetadata(Type type, string routeTemplate, HttpMethod httpMethod)
 		{
-			if (type == null) throw new ArgumentNullException(nameof(type));
-			if (routeTemplate == null) throw new ArgumentNullException(nameof(routeTemplate));
-
-			CQType = type;
-			RouteTemplate = routeTemplate;
+			CQType = type ?? throw new ArgumentNullException(nameof(type));
+			RouteTemplate = routeTemplate ?? throw new ArgumentNullException(nameof(routeTemplate));
+			HttpMethod = httpMethod ?? throw new ArgumentNullException(nameof(httpMethod));
 		}
 	}
 }

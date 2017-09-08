@@ -26,7 +26,10 @@ namespace CqrsApi.Sample
 				.AddMvcWithCqrsApi(cqrsApiSetupAction: options =>
 					{
 						options.Builder
-							.AddAssemblyTypes(typeof(Startup).Assembly)
+							// The following line will add all the assembly's queries with customized URLs
+							.AddAssemblyQueries(typeof(Startup).Assembly, typeName => "Get" + typeName.Replace("Query", ""))
+							// Commands are registered with default URLs (that is type name without the 'Command' suffix
+							.AddAssemblyCommands(typeof(Startup).Assembly)
 							.Build();
 					});
 

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CqrsApi
 {
-	[CqrsApiControllerMetadataConvention]
+	[NonController]
 	public class QueryController<TQuery, TResult> where TQuery : IQuery<TResult>
 	{
 		private readonly IQueryDispatcher _queryDispatcher;

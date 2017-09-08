@@ -22,6 +22,7 @@ namespace CqrsApi
 			{
 				var returnType =
 					type.GetInterfaces()
+						.Where(i => i.IsGenericType)
 						.Where(i => i.GetGenericTypeDefinition() == typeof(IQuery<>))
 						.Select(i => i.GenericTypeArguments.First())
 						.Single();

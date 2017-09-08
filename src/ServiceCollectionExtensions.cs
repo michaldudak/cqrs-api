@@ -8,28 +8,30 @@ namespace CqrsApi
 	{
 		public static IMvcBuilder AddMvcWithCqrsApi(this IServiceCollection services, Action<MvcOptions> mvcSetupAction = null, Action<CqrsApiOptions> cqrsApiSetupAction = null)
 		{
+			var cqrsApiOptions = new CqrsApiOptions();
+
+			// TODO: come up with sensible defaults if nothing is provided.
+			cqrsApiSetupAction?.Invoke(cqrsApiOptions);
+
 			var mvcBuilder = services.AddMvc(config => {
 				mvcSetupAction?.Invoke(config);
-				config.Conventions.Add(new CqrsApiControllerMetadataConvention());
+				config.Conventions.Add(new CqrsApiControllerMetadataConvention(cqrsApiOptions));
 			});
 
-			SetupCqrsApi(mvcBuilder, cqrsApiSetupAction);
+			SetupCqrsApi(mvcBuilder, cqrsApiOptions);
 
 			return mvcBuilder;
 		}
 		
-		private static void SetupCqrsApi(IMvcBuilder mvcBuilder, Action<CqrsApiOptions> configurationAction)
+		private static void SetupCqrsApi(IMvcBuilder mvcBuilder, CqrsApiOptions cqrsApiOptions)
 		{
-			var cqrsApiOptions = new CqrsApiOptions();
-			// TODO: come up with sensible defaults if nothing is provided.
-			configurationAction?.Invoke(cqrsApiOptions);
-
 			mvcBuilder.ConfigureApplicationPartManager(p =>
 			{
 				p.FeatureProviders.Add(new CommandControllerFeatureProvider(cqrsApiOptions));
 				p.FeatureProviders.Add(new QueryControllerFeatureProvider(cqrsApiOptions));
 			});
 
+			mvcBuilder.Services.AddTransient<CqrsApiControllerMetadataConvention>();
 			mvcBuilder.Services.AddSingleton(cqrsApiOptions);
 		}
 	}
