@@ -1,14 +1,9 @@
-using System;
 using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
+using CqrsApi.Tests.TestApp;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Newtonsoft.Json;
-using Xunit;
-using CqrsApi.Tests.TestApp;
-using System.Net;
 
 namespace CqrsApi.Tests.Infrastructure
 {
@@ -16,7 +11,8 @@ namespace CqrsApi.Tests.Infrastructure
 	{
 		protected readonly HttpClient _client;
 		protected string _contentRoot;
-		public BaseWebTest()
+
+		protected BaseWebTest()
 		{
 			_client = GetClient();
 		}
@@ -29,6 +25,6 @@ namespace CqrsApi.Tests.Infrastructure
 			return client;
 		}
 
-		protected StringContent Json(object payload) => new StringContent(JsonConvert.SerializeObject(payload), UTF8Encoding.UTF8, "application/json");
+		protected StringContent Json(object payload) => new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
 	}
 }

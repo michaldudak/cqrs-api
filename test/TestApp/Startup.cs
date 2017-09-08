@@ -1,15 +1,10 @@
 using System;
-using System.Diagnostics;
 using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using CqrsEssentials.Autofac;
-using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.TestHost;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CqrsApi.Tests.TestApp

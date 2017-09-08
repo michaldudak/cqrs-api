@@ -6,7 +6,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{80DCAF88-B20
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FFC03483-99CA-460A-8B40-EAB057EA4A3D}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		license.md = license.md
+		readme.md = readme.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CqrsApi.Sample", "sample\CqrsApi.Sample.csproj", "{6DECE9B8-1173-4146-9F99-79718C81FC37}"

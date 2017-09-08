@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Reflection;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
-using CqrsApi.Sample.CommandsAndQueries;
 using CqrsEssentials.Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
@@ -34,7 +31,7 @@ namespace CqrsApi.Sample
 					});
 
 			services.AddSwaggerGen(options =>
-				options.SwaggerDoc("v1", new Info { Title = "Conference Planner API", Version = "v1" })
+				options.SwaggerDoc("v1", new Info { Title = "CQRS API Sample", Version = "v1" })
 			);
 
 			var builder = new ContainerBuilder();

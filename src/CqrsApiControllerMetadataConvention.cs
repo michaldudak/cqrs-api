@@ -12,7 +12,7 @@ namespace CqrsApi
 		public void Apply(ControllerModel controller)
 		{
 			var isCommandController = controller.ControllerType.IsClosedTypeOf(typeof(CommandController<>));
-			var isQueryController = isCommandController ? false : controller.ControllerType.IsClosedTypeOf(typeof(QueryController<,>));
+			var isQueryController = !isCommandController && controller.ControllerType.IsClosedTypeOf(typeof(QueryController<,>));
 
 			if (!isCommandController && !isQueryController)
 			{
@@ -31,7 +31,7 @@ namespace CqrsApi
 				Template = entityType.Name.Replace(isCommandController ? "Command" : "Query", string.Empty)
 			};
 
-			controller.Selectors[0].ActionConstraints.Add(new HttpMethodActionConstraint(isCommandController ? new [] {"POST"} : new [] { "GET" }));
+			controller.Selectors[0].ActionConstraints.Add(new HttpMethodActionConstraint(isCommandController ? new [] { "POST" } : new [] { "GET" }));
 
 			// TODO: allow customizations (through attributes?), like caching, etc.
 			// Authz shouldn't be neccessary as it should be the command handler's responsibility.
